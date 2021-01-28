@@ -1,0 +1,38 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Comments
+{% endblock %}
+
+{% block content %}
+<div id="container" style="width: 75%;">
+  <canvas id="pie-chart"></canvas>
+  {{"Mobile phones with the most comments"}}
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+
+  var config = {
+    type: 'pie',
+    data: {
+      datasets: [{
+        data: JSON.parse("{{data}}".replace(/&quot;/g, '"')),
+        backgroundColor: ['#002699', '#0039e6', '#3366ff', '#809fff', '#b3c6ff'],
+        label: 'Mobiles'
+      }],
+      labels: JSON.parse("{{labels}}".replace(/&quot;/g, '"'))
+    },
+    options: {
+      responsive: true
+    }
+  };
+
+  window.onload = function () {
+    var ctx = document.getElementById('pie-chart').getContext('2d');
+    window.myPie = new Chart(ctx, config);
+  };
+
+</script>
+
+{% endblock %}

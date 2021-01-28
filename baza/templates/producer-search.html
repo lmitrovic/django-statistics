@@ -1,0 +1,22 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Producer search
+{% endblock %}
+
+
+
+{% block content %}
+
+<form method="post" action="{% url 'baza:producerSearch' %}">
+    {% csrf_token %}
+    <div class="form-group">
+        <label for="{{ form.producer.id_for_label }}">Write a producer for search:</label>
+        <p></p>
+        {{form.producer}}
+    </div>
+
+    <input type="submit" class="btn btn-danger" value="Search" />
+</form>
+
+{% endblock %}

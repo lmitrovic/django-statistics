@@ -1,0 +1,46 @@
+{% load static %}
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+
+    <a class="navbar-brand" href="{% url 'baza:home' %}">
+        <img src="{% static 'img/phone-icon.png' %}" width="30" height="30" class="d-inline-block align-top"
+            alt="logo" /> Home </a>
+
+    <ul class="navbar-nav mr-auto">
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:producerSearch' %}">Phones by producer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:searchProducerMinMax' %}">Min/Max price for producer</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:min_prices' %}">Top 10 MIN prices</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:max_prices' %}">Top 10 MAX prices</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:max_comments_for_phone' %}">Top comments for phone</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'baza:top_active_users' %}">Top active users</a>
+        </li>
+    </ul>
+
+</nav>
+
+<div class="myDiv">
+    <b-jumbotron class="bg-primary text-light shadow mt-0 header" header="Mobiles Impressions">
+        <img src="{% static 'img/header.png' %}" alt="" class="mw-100" width="300px" />
+    </b-jumbotron>
+</div>
+
+<style>
+    .myDiv {
+        border: 5px outset red;
+        background-color: #4d94ff;
+        text-align: center;
+    }
+</style>

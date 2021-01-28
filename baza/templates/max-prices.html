@@ -1,0 +1,55 @@
+{% extends 'master.html' %}
+
+{% block title %}
+Top 10 max prices
+{% endblock %}
+
+{% block content %}
+
+<div id="container" style="width: 75%;">
+  <canvas id="maximum" data-url="{% url 'baza:maximum' %}"></canvas>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+<script>
+
+  $(function () {
+
+    var $maximumChart = $("#maximum");
+    $.ajax({
+      url: $maximumChart.data("url"),
+      success: function (data) {
+
+        var ctx = $maximumChart[0].getContext("2d");
+
+        new Chart(ctx, {
+          type: 'bar',
+          data: {
+            labels: data.labels,
+            datasets: [{
+              label: 'Mobile phones',
+              backgroundColor: '#4d94ff',
+              data: data.data
+            }]
+          },
+          options: {
+            responsive: true,
+            legend: {
+              position: 'top',
+            },
+            title: {
+              display: true,
+              text: 'Top 10 mobiles with the biggest price'
+            }
+          }
+        });
+
+      }
+    });
+
+  });
+
+</script>
+
+{% endblock %}
